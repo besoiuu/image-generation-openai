@@ -1,0 +1,101 @@
+.page {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.top {
+  position: absolute;
+  top: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: baseline;
+  width: 70vw;
+  justify-content: space-around;
+  padding: 1.5rem;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.15);
+  font-size: 1.5rem;
+}
+
+.navWrap ul {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 25rem;
+  justify-content: space-evenly;
+  padding: 0;
+  margin: 0;
+}
+
+.top .gen-button {
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  font-size: 1.5rem;
+}
+
+.top .gen-button:hover {
+  background: rgba(85, 92, 210, 0.4);
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* content */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+.content h1 {
+  text-align: center;
+  width: 500px;
+  font-size: 2rem;
+  padding-bottom: 25px;
+}
+
+.content h4 {
+  text-align: center;
+  font-size: 1.3rem;
+  width: 800px;
+}
+
+.content-button {
+  display: flex;
+  gap: 80px;
+  margin-bottom: 100px;
+}
+
+.content-about {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  top: 100px;
+}
+
+.content-about .content-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.content-about .content-text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-about .content-text h2 {
+  font-size: 1.5rem;
+}
+
+.content-about .content-text p {
+  font-size: 1.3rem;
+}
