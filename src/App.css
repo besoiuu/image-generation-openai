@@ -59,6 +59,10 @@ body {
   width: 170px;
 }
 
+.spinner {
+  align-self: center;
+}
+
 .info-ui {
   margin-top: 18px;
   display: flex;

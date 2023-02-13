@@ -37,6 +37,12 @@ export const Homepage = () => {
           >
             Gradient
           </button>
+          <button
+            className="gen-button"
+            onClick={() => navigate("/texteditor")}
+          >
+            Text
+          </button>
         </div>
         <div className="content-about">
           <img className="content-img" src={testImg}></img>
