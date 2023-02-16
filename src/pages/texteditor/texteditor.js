@@ -116,6 +116,7 @@ export const TextEditor = () => {
             }
           />
         </label>
+        <br />
         <label className="editor-label">
           Color:
           <div className="color-input">
@@ -127,15 +128,34 @@ export const TextEditor = () => {
           </div>
         </label>
       </div>
-      <br />
       <div className="text-container">
         <textarea className="input-text" value={text} onChange={handleTextChange} maxLength="40" />
         <div className="output-text" style={style}>
           {text}
         </div>
       </div>
-      <div className="css-container">
+      {/* <div className="css-container">
         <pre>{JSON.stringify(style, null, 2)}</pre>
+      </div> */}
+      <div className="output-div">
+        <label htmlFor="output">Your css code:</label>
+        <textarea
+          className="textarea-output"
+          id="output"
+          name="output"
+          rows="10"
+          cols="30"
+          readOnly
+          value={`.your-class {
+            font-style: ${style.fontStyle};
+            font-weight: ${style.fontWeight};
+            color: ${style.color};
+            font-size: ${style.fontSize};
+            text-align: ${style.textAlign};
+            line-height: ${style.lineHeight};
+            letter-spacing: ${style.letterSpacing};
+          }`}
+        />
       </div>
     </div>
     </>

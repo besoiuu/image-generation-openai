@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FcPrevious } from "react-icons/fc";
-import "./gradientgen.css"
+import "./gradientgen.css";
 
 export const GradientGenerator = () => {
   const [color1, setColor1] = useState("#ff0000");
@@ -105,24 +105,25 @@ export const GradientGenerator = () => {
         />
         seconds
       </div>
-      <br />
       <div className="output-div">
         <label htmlFor="output">Your css code:</label>
         <textarea
           className="textarea-output"
           id="output"
           name="output"
-          rows="5"
+          rows="8"
           cols="50"
           readOnly
-          value={`background: ${
-            type === "linear"
-              ? `linear-gradient(${angle}deg, ${color1}, ${color2})`
-              : `radial-gradient(circle, ${color1}, ${color2})`
-          };
+          value={` .your-class {
+            background: ${
+              type === "linear"
+                ? `linear-gradient(${angle}deg, ${color1}, ${color2})`
+                : `radial-gradient(circle, ${color1}, ${color2})`
+            };
             transition: background ${transition} ${transitionTime}s;
             height: 200px;
-            width: 100%;`}
+            width: 100%;
+        }`}
         />
       </div>
       <button className="gen-button" onClick={() => navigate(-1)}>
