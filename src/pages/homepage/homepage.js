@@ -1,15 +1,24 @@
 import "./homepage.css";
-import { useNavigate } from "react-router-dom";
-import testImg from '../../assets/bg/image.gif'
+import { useNavigate, Link } from "react-router-dom";
+import testImg from "../../assets/bg/image.gif";
+import { useState } from "react";
+import { FcMenu } from "react-icons/fc";
 
 export const Homepage = () => {
   const navigate = useNavigate();
+  const [showMenu, setShowMenu] = useState(false);
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
 
   return (
     <div className="page">
       <div className="top">
         <a>InVision</a>
-        <nav className="navWrap">
+        <div className="menu-icon" onClick={toggleMenu}>
+          <FcMenu />
+        </div>
+        <nav className={showMenu ? "navWrap active" : "navWrap"}>
           <ul>
             <a>About</a>
             <a>Why</a>
@@ -53,6 +62,54 @@ export const Homepage = () => {
               it a try!
             </p>
           </div>
+        </div>
+      </div>
+      <div className="about-section">
+        <div className="introduction">
+          <p>
+            Our Image & Text Editor with Gradient Generator App is a
+            comprehensive tool designed to help users generate images, edit
+            text, and access gradients easily in one place. With this app, users
+            can create custom designs for their creative projects, social media
+            posts, and other design-related tasks.
+          </p>
+        </div>
+        <div className="benefits">
+          <p>Benefits:</p>
+          <ul>
+            <li>
+              Easy-to-use interface: The app has a simple and user-friendly
+              interface, making it easy for users to navigate and use its
+              features.
+            </li>
+            <li>
+              Customizable: The interface is highly customizable, allowing users
+              to adjust it to their liking and create unique designs.
+            </li>
+            <li>
+              Saves time: The app helps users save time by providing a
+              one-stop-shop for generating images, editing text, and creating
+              gradients.
+            </li>
+            <li>
+              Accessible: The app is available on both iOS and Android platforms
+              and is optimized for both mobile and tablet devices.
+            </li>
+          </ul>
+        </div>
+        <div className="shorts">
+          <p>Corner Cuts:</p>
+          <ul>
+            <li>
+              Limited Features: The app may not have all the advanced features
+              that a professional designer may require.
+            </li>
+            <li>
+              Dependence on Dalle API: The app requires a Dalle API Key to be
+              added to the .env file to work, which may limit its use for some
+              users.
+            </li>
+          </ul>
         </div>
       </div>
     </div>
