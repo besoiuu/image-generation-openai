@@ -27,7 +27,7 @@ The app is designed to help users generate images, edit text, and access gradien
 
 > `npm install`
 
-3.  Edit the .env file in the project root directory and enter your openai api key:## Rename a file
+3.  Create the .env file in the project root directory and enter your openai api key:
 
 > `REACT_APP_API_KEY="ENTER YOUR OPENAI API KEY"`
 
