@@ -149,7 +149,7 @@
 
 @media screen and (max-width: 768px) {
   .menu-icon {
-    display:block;
+    display: block;
   }
   .navWrap {
     position: absolute;
@@ -161,10 +161,14 @@
     font-size: 1.5rem;
     z-index: 1;
     backdrop-filter: blur(5px);
-    width:100%;
+    width: 100%;
   }
 
- 
+  .content {
+    position: relative;
+    top: 6rem;
+  }
+
   .navWrap.active {
     display: flex;
     justify-content: center;
