@@ -41,7 +41,6 @@ export const ImageGenerator = () => {
     const foundImg = parsedGallery.find(
       (imgObj) => imgObj.imgLink === responseData
     );
-    console.log(foundImg);
     if (responseData && responseData !== "" && foundImg === undefined) {
       listRef.current.push({
         imgLink: responseData,
@@ -85,8 +84,12 @@ export const ImageGenerator = () => {
         <Popup onClose={() => setShowPopup(false)} show={showPopup}></Popup>
       </div>
       <div className="back-button-wrapper">
-      <Button className="gen-button" variant="primary" onClick={() => navigate(-1)}>
-      <FcPrevious />
+        <Button
+          className="gen-button"
+          variant="primary"
+          onClick={() => navigate(-1)}
+        >
+          <FcPrevious />
         </Button>
       </div>
     </div>

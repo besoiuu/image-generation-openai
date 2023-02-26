@@ -29,6 +29,7 @@
 }
 
 .gradient-output {
+  margin-top: 30px;
   border-radius: 15px;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 2px #77a7ffc3;
@@ -86,6 +87,7 @@
   height: 40px;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 2px #77a7ffc3;
+  font-size:20px;
 }
 
 

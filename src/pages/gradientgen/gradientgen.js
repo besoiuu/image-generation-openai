@@ -48,9 +48,8 @@ export const GradientGenerator = () => {
 
   return (
     <div className="gradient-ui">
-      <div className="gradient-output" style={gradientStyle} />
-      <br />
-      <div className="gradient-controls">
+      <div className="gradient-output m-3" style={gradientStyle} />
+      <div className="gradient-controls m-2" >
         <div className="color-input">
           <input type="color" value={color1} onChange={handleColor1Change} />
         </div>
@@ -58,8 +57,7 @@ export const GradientGenerator = () => {
           <input type="color" value={color2} onChange={handleColor2Change} />
         </div>
       </div>
-      <br />
-      <div className="angle-ui">
+      <div className="angle-ui m-1">
         <label className="angle-label">Angle:</label>
         <input
           type="number"
@@ -68,7 +66,6 @@ export const GradientGenerator = () => {
           onChange={handleAngleChange}
           disabled={type === "radial"}
         />
-        <br />
         <label className="select-label">Type:</label>
         <select
           value={type}
@@ -79,8 +76,7 @@ export const GradientGenerator = () => {
           <option value="radial">Radial</option>
         </select>
       </div>
-      <br />
-      <div className="transition-ui">
+      <div className="transition-ui m-1">
         <label className="transition-label">Transition:</label>
         <select
           value={transition}
@@ -94,8 +90,7 @@ export const GradientGenerator = () => {
           <option value="ease-in-out">ease-in-out</option>
         </select>
       </div>
-      <br />
-      <div className="time-ui">
+      <div className="time-ui m-1">
         <label className="time-label">Transition time:</label>
         <input
           type="number"
@@ -105,7 +100,7 @@ export const GradientGenerator = () => {
         />
         seconds
       </div>
-      <div className="output-div">
+      <div className="output-div m-1 mb-0">
         <label htmlFor="output">Your css code:</label>
         <textarea
           className="textarea-output"
@@ -126,7 +121,7 @@ export const GradientGenerator = () => {
         }`}
         />
       </div>
-      <button className="gen-button" onClick={() => navigate(-1)}>
+      <button className="gen-button mt-0 mb-3" onClick={() => navigate(-1)}>
         <FcPrevious />
       </button>
     </div>

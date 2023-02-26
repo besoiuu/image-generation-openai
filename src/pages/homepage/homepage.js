@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import testImg from "../../assets/bg/image.gif";
 import { useState } from "react";
 import { FcMenu } from "react-icons/fc";
+import  invisionlogo  from "../../assets/logo/invisionlogoblue.png";
 
 export const Homepage = () => {
   const navigate = useNavigate();
@@ -14,11 +15,12 @@ export const Homepage = () => {
   return (
     <div className="page">
       <div className="top">
-        <a>InVision</a>
+        <img className="w-25" src={invisionlogo}/>
         <div className="menu-icon" onClick={toggleMenu}>
           <FcMenu />
         </div>
-        <nav className={showMenu ? "navWrap active" : "navWrap"}>
+        {/* <nav className={showMenu ? "navWrap active" : "navWrap"}> */}
+        <nav className="navWrap active">
           <ul>
             <a>About</a>
             <a>Why</a>
