@@ -1,5 +1,5 @@
 import "./homepage.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import testImg from "../../assets/bg/image.gif";
 import { useState } from "react";
 import { FcMenu } from "react-icons/fc";
