@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState,useRef, useEffect } from "react";
 import { InputUi } from "../../components/inputUi/inputUi";
 import { useNavigate } from "react-router-dom";
 import { createImage } from "../../services/stabilityai";
@@ -7,13 +7,15 @@ import { FcLike, FcSearch, FcGallery, FcPrevious } from "react-icons/fc";
 import { Spinner } from "react-bootstrap";
 import Popup from "../../components/pop-up/popup";
 import { db } from "../../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+
 
 export const ImageGenerator = () => {
   const [userInput, setUserInput] = useState("");
   const [responseData, setResponseData] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const listRef = useRef([]);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchSavedImages = async () => {
