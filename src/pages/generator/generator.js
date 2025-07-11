@@ -1,4 +1,4 @@
-import { useState,useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { InputUi } from "../../components/inputUi/inputUi";
 import { useNavigate } from "react-router-dom";
 import { createImage } from "../../services/stabilityai";
@@ -6,9 +6,10 @@ import { Button } from "react-bootstrap";
 import { FcLike, FcSearch, FcGallery, FcPrevious } from "react-icons/fc";
 import { Spinner } from "react-bootstrap";
 import Popup from "../../components/pop-up/popup";
-import { db } from "../../firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
-
+import { ref, uploadString, getDownloadURL } from "firebase/storage";
+import { storage, db } from "../../firebase";
+import { v4 as uuidv4 } from "uuid"; // npm install uuid
 
 export const ImageGenerator = () => {
   const [userInput, setUserInput] = useState("");
@@ -65,9 +66,19 @@ export const ImageGenerator = () => {
     if (!responseData || responseData === "") return;
 
     try {
-      // Adăugăm imaginea în colecția "images"
+      // Creăm un path unic pentru imagine
+      const imageId = uuidv4();
+      const storageRef = ref(storage, `images/${imageId}.png`);
+
+      // Încarcăm imaginea (care e deja base64) în Firebase Storage
+      await uploadString(storageRef, responseData, "data_url");
+
+      // Obținem URL-ul public
+      const downloadURL = await getDownloadURL(storageRef);
+
+      // Salvăm doar linkul în Firestore
       await addDoc(collection(db, "images"), {
-        imgLink: responseData,
+        imgLink: downloadURL,
         title: userInput,
         createdAt: new Date(),
       });
