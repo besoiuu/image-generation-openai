@@ -151,6 +151,26 @@
   margin-bottom: 1.5rem;
 }
 
+a {
+  color: #86cbfd;           /* Base color */
+  text-decoration: none;    /* Removes underline */
+  font-weight: 500;         /* Semi-bold for visibility */
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent; /* Subtle hover underline */
+}
+
+a:hover,
+a:focus {
+  color: #71bff6;           /* Darker on hover */
+  border-bottom: 2px solid #51b7ff; /* Underline on hover */
+  outline: none;
+}
+
+a:active {
+  color: #00457a;           /* Even darker on click */
+}
+
+
 @media screen and (max-width: 768px) {
   .menu-icon {
     display: block;

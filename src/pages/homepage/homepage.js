@@ -15,16 +15,16 @@ export const Homepage = () => {
   return (
     <div className="page">
       <div className="top">
-        <img className="w-25" src={invisionlogo}/>
+        <img className="w-25" src={invisionlogo} alt="invisionLogo"/>
         <div className="menu-icon" onClick={toggleMenu}>
           <FcMenu />
         </div>
         {/* <nav className={showMenu ? "navWrap active" : "navWrap"}> */}
         <nav className="navWrap active">
           <ul>
-            <a>About</a>
-            <a>Why</a>
-            <a>Who</a>
+            <a href="https://github.com/besoiuu/image-generation-openai">About</a>
+            <a href="https://github.com/besoiuu">Why</a>
+            <a href="https://besoiuuworks.netlify.app">Who</a>
           </ul>
         </nav>
         <button className="gen-button" onClick={() => navigate("/generator")}>
@@ -56,7 +56,7 @@ export const Homepage = () => {
           </button>
         </div>
         <div className="content-about">
-          <img className="content-img" src={testImg}></img>
+          <img className="content-img" src={testImg} alt="testImage"></img>
           <div className="content-text">
             <h2>Unleash your creativity</h2>
             <p>
