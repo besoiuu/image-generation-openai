@@ -32,7 +32,6 @@ export const ImageGenerator = () => {
   setResponseData(undefined);
 
   try {
-    console.log("🔵 Prompt trimis:", userInput); // ← VERIFICARE
     const imageResult = await createImage(userInput); // ← PASĂM userInput
     setResponseData(imageResult);
   } catch (error) {
