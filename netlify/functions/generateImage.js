@@ -1,6 +1,8 @@
 import fetch from "node-fetch";
 
 export async function handler(event, context) {
+  console.log("🔁 Function hit");
+
   const STABILITY_API_KEY = process.env.STABILITY_API_KEY;
   const body = JSON.parse(event.body || "{}");
   const prompt = body.prompt;
@@ -33,12 +35,11 @@ export async function handler(event, context) {
     );
 
     if (!response.ok) {
-      const error = await response.json();
+      const errData = await response.json();
+      console.error("❌ Stability error:", errData);
       return {
         statusCode: response.status,
-        body: JSON.stringify({
-          error: error.message || "Failed to generate image.",
-        }),
+        body: JSON.stringify({ error: errData.message || "Stability failed." }),
       };
     }
 
@@ -52,9 +53,10 @@ export async function handler(event, context) {
       }),
     };
   } catch (err) {
+    console.error("❗ Unexpected error:", err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: err.message || "Server error." }),
+      body: JSON.stringify({ error: err.message || "Server error" }),
     };
   }
 }
