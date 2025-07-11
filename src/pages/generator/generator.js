@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { InputUi } from "../../components/inputUi/inputUi";
 import { useNavigate } from "react-router-dom";
 import { createImage } from "../../services/stabilityai";
@@ -6,56 +6,74 @@ import { Button } from "react-bootstrap";
 import { FcLike, FcSearch, FcGallery, FcPrevious } from "react-icons/fc";
 import { Spinner } from "react-bootstrap";
 import Popup from "../../components/pop-up/popup";
+import { db } from "../../firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 export const ImageGenerator = () => {
   const [userInput, setUserInput] = useState("");
   const [responseData, setResponseData] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const listRef = useRef([]);
   const navigate = useNavigate();
-
   useEffect(() => {
-    const storedData = localStorage.getItem("savedImg");
-    if (storedData) {
-      listRef.current = JSON.parse(storedData);
-    }
+    const fetchSavedImages = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "images"));
+        const imageList = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        listRef.current = imageList;
+      } catch (error) {
+        console.error("Eroare la citirea imaginilor din Firestore:", error);
+      }
+    };
+
+    fetchSavedImages();
   }, []);
 
   const generateImage = async () => {
-  if (!userInput || userInput.trim() === "") {
-    alert("Te rog introdu un prompt valid!");
+    if (!userInput || userInput.trim() === "") {
+      alert("Te rog introdu un prompt valid!");
+      return;
+    }
+
+    setLoading(true);
+    setResponseData(undefined);
+
+    try {
+      const imageResult = await createImage(userInput); // ← PASĂM userInput
+      setResponseData(imageResult);
+    } catch (error) {
+      console.error("Eroare:", error.message);
+      alert("A apărut o eroare: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const exists = listRef.current.some((img) => img.imgLink === responseData);
+  if (exists) {
+    alert("Această imagine este deja salvată.");
     return;
   }
 
-  setLoading(true);
-  setResponseData(undefined);
+  const saveImg = async () => {
+    if (!responseData || responseData === "") return;
 
-  try {
-    const imageResult = await createImage(userInput); // ← PASĂM userInput
-    setResponseData(imageResult);
-  } catch (error) {
-    console.error("Eroare:", error.message);
-    alert("A apărut o eroare: " + error.message);
-  } finally {
-    setLoading(false);
-  }
-};
-
-
-  const saveImg = () => {
-    const galleryFav = localStorage.getItem("savedImg");
-    const parsedGallery = galleryFav ? JSON.parse(galleryFav) : [];
-    const foundImg = parsedGallery.find(
-      (imgObj) => imgObj.imgLink === responseData
-    );
-    if (responseData && responseData !== "" && foundImg === undefined) {
-      listRef.current.push({
+    try {
+      // Adăugăm imaginea în colecția "images"
+      await addDoc(collection(db, "images"), {
         imgLink: responseData,
         title: userInput,
+        createdAt: new Date(),
       });
-      localStorage.setItem("savedImg", JSON.stringify(listRef.current));
+
       setShowPopup(true);
+    } catch (error) {
+      console.error("Eroare la salvare în Firestore:", error);
+      alert("A apărut o eroare la salvarea imaginii.");
     }
   };
 
