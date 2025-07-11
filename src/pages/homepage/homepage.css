@@ -1,0 +1,209 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top {
+  position: absolute;
+  top: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+  height: 10vh;
+  padding: 1.5rem;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.15);
+  font-size: 1.5rem;
+}
+
+
+.navWrap {
+  display: none;
+}
+
+.navWrap.active {
+  display: block;
+}
+
+.navWrap ul {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 25rem;
+  justify-content: space-evenly;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-right: 5rem;
+}
+
+.navWrap ul li {
+  margin: 0 10px;
+}
+
+.menu-icon {
+  cursor: pointer;
+  display: none;
+  font-size: 24px;
+}
+
+.top .gen-button {
+  margin: 0;
+  margin-right:2rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  font-size: 1.5rem;
+}
+
+.top .gen-button:hover {
+  background: rgba(85, 92, 210, 0.4);
+  box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* content */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 110vh;
+  justify-content: center;
+}
+
+.content h1 {
+  text-align: center;
+  width: 500px;
+  font-size: 2rem;
+  padding-bottom: 25px;
+}
+
+.content h4 {
+  text-align: center;
+  font-size: 1.3rem;
+  width: 800px;
+}
+
+.content-button {
+  display: flex;
+  gap: 80px;
+  margin-bottom: 100px;
+}
+
+.content-about {
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+
+.content-about .content-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.content-about .content-text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-about .content-text h2 {
+  font-size: 1.5rem;
+}
+
+.content-about .content-text p {
+  font-size: 1.3rem;
+}
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+  height: 100vh;
+}
+
+.introduction p,
+.benefits p,
+.benefits ul li,
+.shorts p,
+.shorts ul li {
+  font-size: 1.2rem;
+}
+
+.introduction p {
+  margin: 0;
+}
+
+.introduction,
+.benefits,
+.shorts {
+  background-color: rgba(255, 255, 255, 0.18);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 2px 3px 3px 2px rgba(255, 255, 255, 0.18);
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: #86cbfd;           /* Base color */
+  text-decoration: none;    /* Removes underline */
+  font-weight: 500;         /* Semi-bold for visibility */
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent; /* Subtle hover underline */
+}
+
+a:hover,
+a:focus {
+  color: #71bff6;           /* Darker on hover */
+  border-bottom: 2px solid #51b7ff; /* Underline on hover */
+  outline: none;
+}
+
+a:active {
+  color: #00457a;           /* Even darker on click */
+}
+
+
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+  .navWrap {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.15);
+    font-size: 1.5rem;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+    width: 100%;
+  }
+
+  .content {
+    position: relative;
+    top: 6rem;
+  }
+
+  .navWrap.active {
+    display: flex;
+    justify-content: center;
+  }
+
+  ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  li {
+    margin: 10px 0;
+  }
+}
