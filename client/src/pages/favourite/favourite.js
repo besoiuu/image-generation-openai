@@ -58,7 +58,8 @@ export const Favourite = () => {
               className="gallery-image"
               src={imgUrl.imgLink}
               key={index}
-              alt={imgUrl.title}
+              alt={imgUrl.title} 
+              width="100%"
             />
             <div className="gallery-description">
               <p className="gallery-card-title">{imgUrl.title}</p>

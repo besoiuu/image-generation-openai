@@ -14,5 +14,5 @@ export const createImage = async (prompt) => {
     throw new Error(data.error || "A apărut o eroare.");
   }
 
-  return data.imageUrl;
+  return data.imageUrl; // este data:image/png;base64,...
 };
