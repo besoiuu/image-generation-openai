@@ -10,7 +10,7 @@ import { TextEditor } from "./pages/texteditor/texteditor";
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename="/">
         <Routes>
           <Route index element={<Homepage />} />
           <Route path="/generator" element={<ImageGenerator />} />

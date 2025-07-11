@@ -23,17 +23,26 @@ export const ImageGenerator = () => {
   }, []);
 
   const generateImage = async () => {
-    setLoading(true);
-    setResponseData(undefined);
-    const imageParameters = {
-      prompt: userInput,
-      n: 1,
-      size: "256x256",
-    };
-    const imageResult = await createImage(imageParameters);
+  if (!userInput || userInput.trim() === "") {
+    alert("Te rog introdu un prompt valid!");
+    return;
+  }
+
+  setLoading(true);
+  setResponseData(undefined);
+
+  try {
+    console.log("🔵 Prompt trimis:", userInput); // ← VERIFICARE
+    const imageResult = await createImage(userInput); // ← PASĂM userInput
     setResponseData(imageResult);
+  } catch (error) {
+    console.error("Eroare:", error.message);
+    alert("A apărut o eroare: " + error.message);
+  } finally {
     setLoading(false);
-  };
+  }
+};
+
 
   const saveImg = () => {
     const galleryFav = localStorage.getItem("savedImg");
